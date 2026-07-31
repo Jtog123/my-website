@@ -1,0 +1,408 @@
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  padding: 120px 24px 60px;
+  background: var(--white);
+  overflow: hidden;
+}
+
+/* Blueprint drawing — revealed under cursor spotlight */
+.hero__blueprint {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.06;
+  transition: opacity 0.4s ease;
+}
+
+.hero:hover .hero__blueprint {
+  opacity: 1;
+  transition: opacity 0.2s ease;
+}
+
+/* Spotlight mask — reveals drawing under cursor */
+.hero__blueprint {
+  mask-image: radial-gradient(
+    circle 320px at var(--spotlight-x, 50%) var(--spotlight-y, 50%),
+    black 0%,
+    rgba(0,0,0,0.7) 25%,
+    rgba(0,0,0,0.3) 45%,
+    transparent 60%
+  );
+  -webkit-mask-image: radial-gradient(
+    circle 320px at var(--spotlight-x, 50%) var(--spotlight-y, 50%),
+    black 0%,
+    rgba(0,0,0,0.7) 25%,
+    rgba(0,0,0,0.3) 45%,
+    transparent 60%
+  );
+}
+
+.hero__drawing-svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+.hero__glow {
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  z-index: 0;
+  background: radial-gradient(circle, var(--red-transparent) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero__container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.hero__tag {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: 0.8rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--grey);
+  margin-bottom: 40px;
+}
+
+.hero__name {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: clamp(3.5rem, 12vw, 8rem);
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--black);
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2em;
+}
+
+/* Name stack for base + overlay layering */
+.hero__name-stack {
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.hero__name-base {
+  position: relative;
+  z-index: 0;
+  margin-bottom: 0;
+}
+
+.hero__name-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: auto;
+  cursor: pointer;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2em;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: clamp(3.5rem, 12vw, 8rem);
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  color: transparent;
+}
+
+.hero__name-first {
+  font-style: italic;
+}
+
+.hero__name-last {
+  color: var(--red);
+  font-style: italic;
+  font-weight: 700;
+}
+
+.hero__stripe {
+  width: 100%;
+  height: 4px;
+  background: var(--grey-light);
+  margin-bottom: 32px;
+  position: relative;
+}
+
+.hero__stripe-fill {
+  height: 100%;
+  background: var(--red);
+}
+
+.hero__sub {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: var(--charcoal);
+  line-height: 1.6;
+  max-width: 520px;
+  margin-bottom: 48px;
+}
+
+.hero__cta {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.hero__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 36px;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  background: var(--red);
+  color: var(--white);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero__btn--outline {
+  background: transparent;
+  color: var(--black);
+  border: 2px solid var(--black);
+}
+
+.hero__btn--outline:hover {
+  background: var(--black);
+  color: var(--white);
+  border-color: var(--black);
+}
+
+.hero__scroll {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--grey);
+}
+
+.hero__scroll-text {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.hero__scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--grey), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+/* Buttons section */
+.hero__btns {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 40px;
+}
+
+@media (min-width: 640px) {
+  .hero__btns {
+    flex-direction: row;
+    gap: 20px;
+  }
+}
+
+/* Primary button */
+.hero__btn-primary {
+  display: inline-flex;
+  width: 100%;
+  max-width: 250px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 9999px;
+  border: 1.5px solid var(--polo-blue);
+  border-color: rgba(35, 52, 106, 0.25);
+  background: rgba(35, 52, 106, 0.04);
+  padding: 10px 24px;
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--polo-blue);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.hero__btn-primary:hover {
+  border-color: var(--polo-blue);
+  background: rgba(35, 52, 106, 0.08);
+}
+
+@media (min-width: 640px) {
+  .hero__btn-primary {
+    width: auto;
+    max-width: none;
+  }
+}
+
+/* Secondary button */
+.hero__btn-secondary {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--grey);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.hero__btn-secondary:hover {
+  color: var(--red);
+}
+
+@media (min-width: 640px) {
+  .hero__btn-secondary {
+    display: inline-flex;
+  }
+}
+
+/* Icon/text wrapper */
+.hero__btn-icon-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Animated text wrapper */
+.hero__btn-text {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+
+.hero__btn-text-top,
+.hero__btn-text-bot {
+  display: block;
+  white-space: nowrap;
+  transition: transform 750ms var(--ease-out);
+}
+
+.hero__btn-text-bot {
+  position: absolute;
+  left: 0;
+  top: 100%;
+}
+
+.hero__btn-primary:hover .hero__btn-text-top,
+.hero__btn-secondary:hover .hero__btn-text-top {
+  transform: translateY(-100%);
+}
+
+.hero__btn-primary:hover .hero__btn-text-bot,
+.hero__btn-secondary:hover .hero__btn-text-bot {
+  transform: translateY(-100%);
+}
+
+/* Arrow icon */
+.hero__btn-arrow {
+  transition: transform 200ms ease;
+}
+
+.hero__btn-primary:hover .hero__btn-arrow {
+  transform: translateX(3px);
+}
+
+/* Bracket decorators */
+.hero__btn-bracket {
+  color: var(--grey);
+  font-weight: 300;
+}
+
+.hero__btn-secondary:hover .hero__btn-bracket {
+  color: var(--red);
+}
+
+/* Reduce-motion fallback */
+@media (prefers-reduced-motion: reduce) {
+  .hero__btn-text-top,
+  .hero__btn-text-bot {
+    transition: none;
+  }
+  .hero__btn-primary:hover .hero__btn-text-bot,
+  .hero__btn-secondary:hover .hero__btn-text-bot {
+    transform: none;
+  }
+  .hero__btn-primary:hover .hero__btn-text-top,
+  .hero__btn-secondary:hover .hero__btn-text-top {
+    transform: none;
+  }
+}
+
+/* Bottom-left digital clock */
+.hero__clock {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  font-family: var(--font-heading);
+  user-select: none;
+  pointer-events: none;
+}
+
+.hero__clock-time {
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--polo-blue);
+  opacity: 0.55;
+  font-variant-numeric: tabular-nums;
+}
+
+.hero__clock-tz {
+  font-size: 0.55rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  color: var(--polo-blue);
+  opacity: 0.35;
+  text-transform: uppercase;
+}

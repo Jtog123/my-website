@@ -1,0 +1,117 @@
+.contact {
+  padding: var(--section-padding);
+  padding-bottom: 0;
+  background: var(--white);
+  position: relative;
+}
+
+.contact__body {
+  margin-bottom: 48px;
+}
+
+.contact__text {
+  font-weight: 300;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--charcoal);
+  margin-bottom: 24px;
+}
+
+.contact__email {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--red);
+  position: relative;
+  transition: color 0.2s;
+}
+
+.contact__email::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--red);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s var(--ease-out);
+}
+
+.contact__email:hover {
+  color: var(--red-dark);
+}
+
+.contact__email:hover::after {
+  transform: scaleX(1);
+}
+
+.contact__socials {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 80px;
+}
+
+.contact__social {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border: 1px solid var(--grey-light);
+  background: var(--white);
+  color: var(--charcoal);
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: border-color 0.3s, color 0.3s, transform 0.2s;
+}
+
+.contact__social:hover {
+  border-color: var(--red);
+  color: var(--red);
+  transform: translateY(-2px);
+}
+
+.contact__footer {
+  border-top: 1px solid var(--grey-light);
+  padding: 24px 0;
+  background: var(--white);
+}
+
+.contact__footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contact__footer-mark {
+  font-size: 0.8rem;
+  color: var(--grey);
+}
+
+.contact__footer-tag {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--red);
+}
+
+@media (max-width: 480px) {
+  .contact__socials {
+    flex-direction: column;
+  }
+
+  .contact__footer-inner {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+}
