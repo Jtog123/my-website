@@ -32,40 +32,91 @@
   margin-bottom: 24px;
 }
 
-.about__skill {
-  margin-bottom: 20px;
+.about__skill-group {
+  position: relative;
+  margin-bottom: 22px;
+  padding-left: 18px;
 }
 
-.about__skill:last-child {
+.about__skill-group:last-child {
   margin-bottom: 0;
 }
 
-.about__skill-head {
+/* Trace bar — draws itself down on scroll-in */
+.about__skill-group-bar {
+  position: absolute;
+  left: 0;
+  top: 3px;
+  bottom: 3px;
+  width: 2px;
+  background: rgba(35, 52, 106, 0.18);
+  border-radius: 1px;
+}
+
+/* Group head — LED dot + title */
+.about__skill-group-head {
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
   margin-bottom: 6px;
 }
 
-.about__skill-label {
+.about__skill-group-title {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--polo-blue);
+}
+
+.about__skill-group-items {
   font-family: var(--font-body);
   font-weight: 400;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
   color: var(--charcoal);
+  opacity: 0.75;
 }
 
-.about__skill-track {
-  width: 100%;
-  height: 4px;
-  background: var(--grey-light);
-  border-radius: 2px;
-  overflow: hidden;
+/* LED indicators — thermal palette */
+.about__led {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  animation: ledPulse 2.4s ease-in-out infinite;
 }
 
-.about__skill-fill {
-  height: 100%;
-  background: var(--red);
-  border-radius: 2px;
-  transition: width 0.8s var(--ease-out);
+.about__led--blue {
+  background: #23346A;
+  box-shadow: 0 0 6px rgba(35, 52, 106, 0.5);
+}
+
+.about__led--green {
+  background: #22c55e;
+  box-shadow: 0 0 6px rgba(34, 197, 94, 0.5);
+}
+
+.about__led--amber {
+  background: #f59e0b;
+  box-shadow: 0 0 6px rgba(245, 158, 11, 0.5);
+}
+
+.about__led--red {
+  background: #FF2800;
+  box-shadow: 0 0 6px rgba(255, 40, 0, 0.5);
+}
+
+@keyframes ledPulse {
+  0%, 100% {
+    opacity: 0.55;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 @media (max-width: 768px) {

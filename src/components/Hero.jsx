@@ -1,5 +1,5 @@
 import { useRef, useCallback, useState, useEffect } from 'react';
-import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
+import { motion, AnimatePresence, useMotionValue, useTransform, useSpring } from 'framer-motion';
 import BlueprintDrawing from './BlueprintDrawing';
 import './Hero.css';
 
@@ -19,6 +19,10 @@ const stripeAnim = {
   hidden: { width: 0 },
   visible: { width: '40%', transition: { duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.9 } },
 };
+
+// ROTATING TITLES — add or remove words here, they cycle in the hero tag
+const rotatingTitles = ['Tinkerer', 'Son', 'Brother', 'Learner'];
+const maxTitleLen = Math.max(...rotatingTitles.map(t => t.length));
 
 export default function Hero() {
   const sectionRef = useRef(null);
@@ -82,6 +86,14 @@ export default function Hero() {
     return () => clearInterval(id);
   }, []);
 
+  const [titleIndex, setTitleIndex] = useState(0);
+  useEffect(() => {
+    const id = setInterval(() => {
+      setTitleIndex(i => (i + 1) % rotatingTitles.length);
+    }, 2600);
+    return () => clearInterval(id);
+  }, []);
+
 
 
   return (
@@ -111,7 +123,25 @@ export default function Hero() {
         animate="visible"
       >
         <motion.p className="hero__tag" variants={fadeUp}>
-          ENGINEER
+          <span className="hero__tag-static">Engineer</span>
+          <span className="hero__tag-sep">|</span>
+          <span className="hero__tag-static">Builder</span>
+          <span className="hero__tag-sep">|</span>
+          <span className="hero__tag-rotating" style={{ minWidth: `${maxTitleLen + 1}ch` }}>
+            <AnimatePresence mode="wait">
+              <motion.span
+                key={rotatingTitles[titleIndex]}
+                className="hero__tag-word"
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -12 }}
+                transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+              >
+                {rotatingTitles[titleIndex]}
+              </motion.span>
+            </AnimatePresence>
+          </span>
+
         </motion.p>
         <div className="hero__name-stack">
           {/* Base layer — fades out on hover to reveal gradient overlay */}

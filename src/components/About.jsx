@@ -2,12 +2,11 @@ import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import './About.css';
 
-const skills = [
-  { label: 'React / Next.js', pct: 90 },
-  { label: 'TypeScript', pct: 85 },
-  { label: 'UI / UX Design', pct: 80 },
-  { label: 'Node.js', pct: 75 },
-  { label: 'CSS / Animations', pct: 85 },
+const skillGroups = [
+  { title: 'Languages', items: 'Python / Typescript / C++ / SQL / YAML', color: 'blue' },
+  { title: 'Frameworks', items: 'FastAPI / React / Node / Express / NextJS / Tailwind', color: 'green' },
+  { title: 'Infrastructure', items: 'PostgreSQL / Docker / Firebase / AWS / Git', color: 'amber' },
+  { title: 'AI/ML', items: 'Agentic Harnesses / OpenAI / Claude / Gemini', color: 'red' },
 ];
 
 const container = {
@@ -28,14 +27,6 @@ const slideLeft = {
 const slideRight = {
   hidden: { opacity: 0, x: 40 },
   visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
-};
-
-const skillBar = {
-  hidden: { width: 0 },
-  visible: (pct) => ({
-    width: `${pct}%`,
-    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.4 },
-  }),
 };
 
 export default function About() {
@@ -73,29 +64,28 @@ export default function About() {
                 compromising on quality.
               </p>
             </motion.div>
-
             <motion.div className="about__skills" variants={slideRight}>
               <h3 className="about__skills-title">Core Competencies</h3>
-              {skills.map((skill, i) => (
+              {skillGroups.map((group, i) => (
                 <motion.div
-                  key={skill.label}
-                  className="about__skill"
+                  key={group.title}
+                  className="about__skill-group"
                   initial={{ opacity: 0, y: 10 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.4, delay: 0.3 + i * 0.08 }}
                 >
-                  <div className="about__skill-head">
-                    <span className="about__skill-label">{skill.label}</span>
+                  <motion.span
+                    className="about__skill-group-bar"
+                    style={{ transformOrigin: 'top' }}
+                    initial={{ scaleY: 0 }}
+                    animate={isInView ? { scaleY: 1 } : {}}
+                    transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0.35 + i * 0.08 }}
+                  />
+                  <div className="about__skill-group-head">
+                    <span className={`about__led about__led--${group.color}`} />
+                    <h4 className="about__skill-group-title">{group.title}</h4>
                   </div>
-                  <div className="about__skill-track">
-                    <motion.div
-                      className="about__skill-fill"
-                      custom={skill.pct}
-                      variants={skillBar}
-                      initial="hidden"
-                      animate={isInView ? 'visible' : 'hidden'}
-                    />
-                  </div>
+                  <p className="about__skill-group-items">{group.items}</p>
                 </motion.div>
               ))}
             </motion.div>

@@ -81,6 +81,38 @@
   margin-bottom: 40px;
 }
 
+.hero__tag-static,
+.hero__tag-sep,
+.hero__tag-decor {
+  display: inline-block;
+  vertical-align: baseline;
+}
+
+.hero__tag-sep {
+  color: var(--red);
+  opacity: 0.5;
+  margin: 0 10px;
+  font-weight: 300;
+}
+
+.hero__tag-decor {
+  color: var(--grey);
+  opacity: 0.6;
+  font-weight: 300;
+}
+
+.hero__tag-rotating {
+  display: inline-block;
+  vertical-align: bottom;
+  text-align: left;
+  position: relative;
+}
+
+.hero__tag-word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
 .hero__name {
   font-family: var(--font-heading);
   font-weight: 600;

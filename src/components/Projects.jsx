@@ -17,8 +17,8 @@ const projects = [
   {
     title: 'LinkedIn Auto Applier',
     desc: 'Automated job application tool that intelligently fills and submits applications on LinkedIn based on user defined criteria and preferences.',
-    tags: ['Python','Playwright', 'SQlite'],
-    img: '/visuals/chrome-bridge-thumbnail.png',
+    tags: ['Python','Playwright', 'SQlite', 'Docker', 'AWS'],
+    img: '/AgentLinkedin.png',
     category: 'Automation',
     status: 'completed',
     private: true,
@@ -39,12 +39,42 @@ const projects = [
     img: '/abe-portrait.jpg',
     imgStyle: { objectPosition: 'center -70px' },
     category: 'Automation',
-    status: 'completed',
+    status: 'in progress',
     url: 'https://github.com/Jtog123/PDF-To-Voice-Reader',
   },
 ];
 
 const pcbId = (s) => s.replace(/[^a-zA-Z0-9]/g, '_').slice(0, 10);
+
+// TAG COLORS — map technologies to the thermal palette (add new techs here)
+const tagColors = {
+  'Python': '#23346A',
+  'TypeScript': '#23346A',
+  'Typescript': '#23346A',
+  'C++': '#23346A',
+  'SQL': '#23346A',
+  'PostgreSQL': '#23346A',
+  'Docker': '#23346A',
+  'Gemini': '#23346A',
+  'YAML': '#f59e0b',
+  'Firebase': '#f59e0b',
+  'AWS': '#f59e0b',
+  'Claude': '#f59e0b',
+  'Git': '#FF2800',
+  'Agentic Harnesses': '#FF2800',
+  'FastAPI': '#22c55e',
+  'Node': '#22c55e',
+  'Express': '#22c55e',
+  'NextJS': '#22c55e',
+  'OpenAI': '#22c55e',
+  'Puppeteer': '#22c55e',
+  'Playwright': '#22c55e',
+  'React': '#00B3CC',
+  'Tailwind': '#00B3CC',
+  'ThreeJS': '#00B3CC',
+  'C Programming Language': '#23346A',
+};
+const DEFAULT_TAG_COLOR = '#23346A';
 
 export default function Projects() {
   const sectionRef = useRef(null);
@@ -131,9 +161,22 @@ export default function Projects() {
                 )}
 
                 <div className="pcb__tags">
-                  {project.tags.map(tag => (
-                    <span key={tag} className="pcb__tag">{tag}</span>
-                  ))}
+                  {project.tags.map(tag => {
+                    const c = tagColors[tag] || DEFAULT_TAG_COLOR;
+                    return (
+                      <span
+                        key={tag}
+                        className="pcb__tag"
+                        style={{
+                          color: c,
+                          borderColor: `${c}40`,
+                          background: `${c}0D`,
+                        }}
+                      >
+                        {tag}
+                      </span>
+                    );
+                  })}
                 </div>
 
                 <div className="pcb__actions">

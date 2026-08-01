@@ -40,7 +40,7 @@ export default function BlueprintDrawing() {
 
         {/* Large rectangular IC block with pin grid — FPGA */}
         <rect x={80} y={200} width={160} height={120} rx={2} strokeWidth="0.8" strokeOpacity="0.35" />
-        <rect x={86} y={206} width={148} height={108} rx={1} strokeWidth="0.4" strokeOpacity="0.2" />
+        <rect x={86} y={206} width={148} height={108} rx={1} strokeWidth="0.4" strokeOpacity="0.3" />
         {Array.from({length:30}, (_,i) => (
           <rect key={`icp${i}`} x={92+(i%6)*24} y={212+Math.floor(i/6)*20} width={10} height={10} rx={1} strokeWidth="0.3" strokeOpacity="0.2" fill="#23346A" fillOpacity="0.08" />
         ))}
@@ -48,7 +48,7 @@ export default function BlueprintDrawing() {
 
         {/* SOIC-16 IC block */}
         <rect x={260} y={200} width={80} height={140} rx={1} strokeWidth="0.7" strokeOpacity="0.3" />
-        <rect x={264} y={204} width={72} height={132} rx={0.5} strokeWidth="0.35" strokeOpacity="0.18" />
+        <rect x={264} y={204} width={72} height={132} rx={0.5} strokeWidth="0.35" strokeOpacity="0.25" />
         {Array.from({length:8}, (_,i) => (
           <rect key={`sl${i}`} x={252} y={212+i*16} width={10} height={6} rx={0.5} strokeWidth="0.3" strokeOpacity="0.2" fill="#23346A" fillOpacity="0.06" />
         ))}
