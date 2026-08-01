@@ -3,9 +3,9 @@ import { useRef } from 'react';
 import './About.css';
 
 const skillGroups = [
-  { title: 'Languages', items: 'Python / Typescript / C++ / SQL / YAML', color: 'blue' },
+  { title: 'Languages', items: 'Python / Typescript / C++ / SQL / Shell / YAML', color: 'blue' },
   { title: 'Frameworks', items: 'FastAPI / React / Node / Express / NextJS / Tailwind', color: 'green' },
-  { title: 'Infrastructure', items: 'PostgreSQL / Docker / Firebase / AWS / Git', color: 'amber' },
+  { title: 'Infrastructure', items: 'Linux / PostgreSQL / Docker / Firebase / AWS / Git', color: 'amber' },
   { title: 'AI/ML', items: 'Agentic Harnesses / OpenAI / Claude / Gemini', color: 'red' },
 ];
 
@@ -49,20 +49,55 @@ export default function About() {
 
           <div className="about__grid">
             <motion.div className="about__text" variants={slideLeft}>
-              <p>
-                I'm a designer and developer who believes the best digital products
-                feel inevitable — clean, purposeful, and effortless to use.
+              <p className="about__lead">
+                I build software that's clean, fast, and easy to use.
               </p>
-              <p>
-                With a focus on front-end architecture and design systems, I bridge the
-                gap between beautiful interfaces and rock-solid code. Every project I
-                ship prioritises clarity, performance, and the person on the other side
-                of the screen.
-              </p>
-              <p>
-                Currently working on tools that help teams ship faster without
-                compromising on quality.
-              </p>
+
+              <div className="about__rig">
+                {/* Terminal chrome */}
+                <div className="about__rig-bar">
+                  <div className="about__rig-dots">
+                    <span className="about__rig-dot about__rig-dot--red" />
+                    <span className="about__rig-dot about__rig-dot--amber" />
+                    <span className="about__rig-dot about__rig-dot--green" />
+                  </div>
+                  <span className="about__rig-title">james@rig — zsh</span>
+                </div>
+
+                <div className="about__rig-body">
+                  <div className="about__rig-main">
+                    <pre className="about__rig-art" aria-hidden="true">{`   ┌─────────┐
+   │ ▓ ▓ ▓ ▓ │
+   │ ▓ ▓ ▓ ▓ │
+   │ ▓ ▓ ▓ ▓ │
+   │ ▓ ▓ ▓ ▓ │
+   └─────────┘`}</pre>
+
+                    <div className="about__rig-specs">
+                      {[
+                        ['OS', 'Ubuntu 26.04', 'green'],
+                        ['CPU', 'Ryzen 5950X', 'red'],
+                        ['GPU', 'RTX 5070 Ti', 'red'],
+                        ['RAM', 'Corsair 64GB', 'amber'],
+                        ['SSD', 'Samsung 2TB', 'green'],
+                        ['MOBO', 'Asus B550', 'amber'],
+                      ].map(([k, v, color]) => (
+                        <div key={k} className="about__rig-spec">
+                          <span className={`about__rig-spec-dot about__rig-spec-dot--${color}`} />
+                          <span className="about__rig-spec-key">{k}</span>
+                          <span className="about__rig-spec-val">{v}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Shell prompt */}
+                  <div className="about__rig-line">
+                    <span className="about__rig-prompt">james@rig ❯</span>
+                    <span className="about__rig-cursor" />
+                  </div>
+                </div>
+              </div>
             </motion.div>
             <motion.div className="about__skills" variants={slideRight}>
               <h3 className="about__skills-title">Core Competencies</h3>

@@ -209,10 +209,6 @@ export default function Projects() {
           </motion.div>
         </div>
 
-        <div className="projects__hint">
-          <span className="projects__hint-text">scroll</span>
-          <div className="projects__hint-line" />
-        </div>
       </div>
 
       {/* Spacer — creates smooth scroll distance */}

@@ -21,7 +21,7 @@ const stripeAnim = {
 };
 
 // ROTATING TITLES — add or remove words here, they cycle in the hero tag
-const rotatingTitles = ['Tinkerer', 'Son', 'Brother', 'Learner'];
+const rotatingTitles = ['Tinkerer', 'Son', 'Brother'];
 const maxTitleLen = Math.max(...rotatingTitles.map(t => t.length));
 
 export default function Hero() {
@@ -187,7 +187,7 @@ export default function Hero() {
         </motion.div>
 
         <motion.p className="hero__sub" variants={fadeUp}>
-          I build clean, precise digital products — from interfaces to infrastructure.
+          From interface to infrastructure. I Build it <span className="hero__sub-em">all</span>.
         </motion.p>
 
         <motion.div className="hero__btns" variants={fadeUp}>
