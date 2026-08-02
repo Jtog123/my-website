@@ -176,6 +176,11 @@
 }
 
 @media (max-width: 480px) {
+  .about__rig {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+  }
   .about__rig-main {
     flex-direction: column;
     align-items: flex-start;
@@ -183,6 +188,26 @@
   }
   .about__rig-specs {
     width: 100%;
+  }
+  .about__rig-title {
+    font-size: 0.78rem;
+  }
+  .about__rig-line {
+    font-size: 0.85rem;
+  }
+  .about__rig-art {
+    font-size: 0.68rem;
+  }
+  .about__rig-spec {
+    font-size: 0.8rem;
+  }
+  .about__rig-spec-dot {
+    width: 7px;
+    height: 7px;
+  }
+  .about__rig-cursor {
+    width: 8px;
+    height: 15px;
   }
 }
 
