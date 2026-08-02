@@ -109,17 +109,16 @@
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: var(--polo-blue);
-  opacity: 0.2;
+  opacity: 0.35;
+  box-shadow: 0 0 4px currentColor;
 }
-
 .pcb__component-id {
   font-family: var(--font-heading);
   font-size: 0.65rem;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.08em;
   color: var(--polo-blue);
-  opacity: 0.35;
+  opacity: 0.5;
   text-transform: uppercase;
 }
 
@@ -211,9 +210,9 @@
 
 .pcb__trace {
   width: 20px;
-  height: 1px;
-  background: var(--polo-blue);
-  opacity: 0.15;
+  height: 2px;
+  background: linear-gradient(90deg, #0033AA, #33BB33);
+  border-radius: 1px;
 }
 
 .pcb__category-text {
@@ -387,7 +386,12 @@
   border-radius: 1px;
 }
 
-/* End cap */
+.pcb__trace-line:nth-child(1) { background: #0033AA; opacity: 0.25; }
+.pcb__trace-line:nth-child(2) { background: #0099CC; opacity: 0.2; }
+.pcb__trace-line:nth-child(3) { background: #33BB33; opacity: 0.2; }
+.pcb__trace-line:nth-child(4) { background: #FFCC00; opacity: 0.2; }
+.pcb__trace-line:nth-child(5) { background: #FF8800; opacity: 0.2; }
+.pcb__trace-line:nth-child(6) { background: #FF3300; opacity: 0.25; }
 .projects__end {
   flex-shrink: 0;
   width: 260px;

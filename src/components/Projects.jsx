@@ -111,17 +111,17 @@ export default function Projects() {
           >
             {projects.map((project, i) => (
               <article key={project.title} className="projects__card">
-                {/* PCB header — IC component label + pin markers */}
+                {/* PCB header — component label + thermal pin markers */}
                 <div className="pcb__header">
                   <div className="pcb__pins">
-                    {Array.from({length: 4}, (_, j) => (
-                      <div key={j} className="pcb__pin-dot" />
+                    {['#0033AA', '#33BB33', '#f59e0b', '#FF2800'].map((c, j) => (
+                      <div key={j} className="pcb__pin-dot" style={{ background: c }} />
                     ))}
                   </div>
-                  <span className="pcb__component-id">U{i + 1}</span>
+                  <span className="pcb__component-id">P{i + 1}</span>
                   <div className="pcb__pins pcb__pins--right">
-                    {Array.from({length: 4}, (_, j) => (
-                      <div key={j} className="pcb__pin-dot" />
+                    {['#FF2800', '#f59e0b', '#33BB33', '#0033AA'].map((c, j) => (
+                      <div key={j} className="pcb__pin-dot" style={{ background: c }} />
                     ))}
                   </div>
                 </div>

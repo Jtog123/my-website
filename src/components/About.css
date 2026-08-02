@@ -44,7 +44,7 @@
 
 /* Development rig — terminal window */
 .about__rig {
-  width: 385px;
+  width: 450px;
   max-width: 100%;
   background: var(--white);
   border: 1.5px solid #0033AA;
@@ -78,7 +78,7 @@
 .about__rig-dot--amber { background: #f59e0b; box-shadow: 0 0 6px rgba(245, 158, 11, 0.4); }
 .about__rig-dot--green { background: #22c55e; box-shadow: 0 0 6px rgba(34, 197, 94, 0.4); }
 .about__rig-title {
-  font-size: 0.7rem;
+  font-size: 0.9rem;
   color: rgba(0, 51, 170, 0.55);
   letter-spacing: 0.05em;
 }
@@ -91,7 +91,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 0.78rem;
+  font-size: 1rem;
   margin-top: 12px;
 }
 
@@ -113,7 +113,7 @@
 /* Chip art */
 .about__rig-art {
   margin: 0;
-  font-size: 0.62rem;
+  font-size: 0.8rem;
   line-height: 1.25;
   color: #22c55e;
   flex-shrink: 0;
@@ -125,21 +125,21 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 7px;
+  gap: 9px;
   min-width: 0;
 }
 
 .about__rig-spec {
   display: grid;
-  grid-template-columns: 8px 42px 1fr;
+  grid-template-columns: 10px 54px 1fr;
   align-items: center;
-  gap: 6px;
-  font-size: 0.72rem;
+  gap: 7px;
+  font-size: 0.94rem;
 }
 
 .about__rig-spec-dot {
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
 }
 
@@ -163,8 +163,8 @@
 /* Blinking cursor */
 .about__rig-cursor {
   display: inline-block;
-  width: 8px;
-  height: 14px;
+  width: 10px;
+  height: 18px;
   background: #22c55e;
   box-shadow: 0 0 8px rgba(34, 197, 94, 0.5);
   animation: rigBlink 1.1s step-end infinite;

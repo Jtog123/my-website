@@ -7,7 +7,7 @@ export default function BlueprintDrawing() {
   const caps1 = Array.from({ length: 14 }, (_, i) => ({ x: 215 + i * 12, y: 340 }));
   const caps2 = Array.from({ length: 14 }, (_, i) => ({ x: 215 + i * 12, y: 380 }));
   const vrmCaps = Array.from({ length: 8 }, (_, i) => ({ x: 240 + i * 16, y: 300 }));
-  const sataPorts = Array.from({ length: 4 }, (_, i) => i);
+  const sataPorts = [2, 3];
   const tracesH = Array.from({ length: 20 }, (_, i) => i);
   const tracesV = Array.from({ length: 16 }, (_, i) => i);
   const socketPinsX = Array.from({ length: 14 }, (_, i) => i);
@@ -208,17 +208,17 @@ export default function BlueprintDrawing() {
         <text x={860} y={738} textAnchor="middle" fontSize="5" fill="#23346A" fillOpacity="0.1" fontFamily="monospace">M.2_2</text>
 
         {/* SATA ports (bottom right) */}
-        <rect x={1000} y={750} width={180} height={40} strokeWidth="0.4" strokeOpacity="0.15" rx={1} />
+        <rect x={1084} y={750} width={104} height={40} strokeWidth="0.4" strokeOpacity="0.15" rx={1} />
         {sataPorts.map(i => (
           <g key={`sata${i}`}>
             <rect x={1008+i*42} y={756} width={36} height={16} rx={1} strokeWidth="0.3" strokeOpacity="0.12" />
             <line x1={1012+i*42} y1={760} x2={1040+i*42} y2={760} strokeWidth="0.15" strokeOpacity="0.11" />
             <line x1={1012+i*42} y1={768} x2={1040+i*42} y2={768} strokeWidth="0.15" strokeOpacity="0.11" />
-            <text x={1026+i*42} y={771} textAnchor="middle" fontSize="4" fill="#23346A" fillOpacity="0.12" fontFamily="monospace">SATA{i+1}</text>
+            <text x={1026+i*42} y={771} textAnchor="middle" fontSize="4" fill="#23346A" fillOpacity="0.12" fontFamily="monospace">SATA{i-1}</text>
           </g>
         ))}
-        <rect x={1000} y={795} width={180} height={20} strokeWidth="0.3" strokeOpacity="0.1" rx={1} />
-        <text x={1090} y={809} textAnchor="middle" fontSize="5" fill="#23346A" fillOpacity="0.1" fontFamily="monospace">SATA 6Gb/s</text>
+        <rect x={1084} y={795} width={104} height={20} strokeWidth="0.3" strokeOpacity="0.1" rx={1} />
+        <text x={1136} y={809} textAnchor="middle" fontSize="5" fill="#23346A" fillOpacity="0.1" fontFamily="monospace">SATA 6Gb/s</text>
 
         {/* I/O Ports (top edge) */}
         <rect x={600} y={60} width={400} height={30} strokeWidth="0.6" strokeOpacity="0.2" rx={1} />
@@ -453,6 +453,54 @@ export default function BlueprintDrawing() {
         ))}
         {Array.from({length:6}, (_,i) => (
           <path key={`crt2${i}`} d={`M 1250 ${350+i*10} Q 1280 ${360+i*10} 1310 ${350+i*10}`} strokeWidth="0.15" strokeOpacity="0.05" fill="none" />
+        ))}
+
+        {/* ===== PCIE PORTS — MIDDLE-RIGHT ===== */}
+        {[0,1,2].map(ri => (
+          <g key={`rpcie${ri}`}>
+            <rect x={1250} y={400+ri*55} width={120} height={18} rx={1} strokeWidth="0.6" strokeOpacity="0.2" />
+            <rect x={1250} y={403+ri*55} width={120} height={12} rx={0.5} strokeWidth="0.25" strokeOpacity="0.1" />
+            {Array.from({length:18}, (_,i) => (
+              <line key={`rpp${ri}_${i}`} x1={1256+i*6.6} y1={405+ri*55} x2={1256+i*6.6} y2={413+ri*55} strokeWidth="0.2" strokeOpacity="0.1" />
+            ))}
+            <rect x={1364} y={402+ri*55} width={6} height={14} rx={0.5} strokeWidth="0.25" strokeOpacity="0.1" />
+            <text x={1310} y={414+ri*55} textAnchor="middle" fontSize="4" fill="#23346A" fillOpacity="0.1" fontFamily="monospace">PCIEx16</text>
+          </g>
+        ))}
+
+        {/* PCIe x1 ports — middle-right */}
+        {[0,1,2].map(ri => (
+          <g key={`rx1${ri}`}>
+            <rect x={1020} y={420+ri*40} width={90} height={14} rx={1} strokeWidth="0.5" strokeOpacity="0.18" />
+            {Array.from({length:13}, (_,i) => (
+              <line key={`rx1p${ri}_${i}`} x1={1026+i*6.6} y1={422+ri*40} x2={1026+i*6.6} y2={432+ri*40} strokeWidth="0.18" strokeOpacity="0.1" />
+            ))}
+            <text x={1065} y={430+ri*40} textAnchor="middle" fontSize="4" fill="#23346A" fillOpacity="0.08" fontFamily="monospace">x1</text>
+          </g>
+        ))}
+
+        {/* ===== PCIE PORTS — BOTTOM-RIGHT ===== */}
+        {[0,1,2].map(ri => (
+          <g key={`bpcie${ri}`}>
+            <rect x={950} y={700+ri*55} width={140} height={18} rx={1} strokeWidth="0.6" strokeOpacity="0.2" />
+            <rect x={950} y={703+ri*55} width={140} height={12} rx={0.5} strokeWidth="0.25" strokeOpacity="0.1" />
+            {Array.from({length:21}, (_,i) => (
+              <line key={`bpp${ri}_${i}`} x1={956+i*6.6} y1={705+ri*55} x2={956+i*6.6} y2={713+ri*55} strokeWidth="0.2" strokeOpacity="0.1" />
+            ))}
+            <rect x={1084} y={702+ri*55} width={6} height={14} rx={0.5} strokeWidth="0.25" strokeOpacity="0.1" />
+            <text x={1020} y={714+ri*55} textAnchor="middle" fontSize="4" fill="#23346A" fillOpacity="0.1" fontFamily="monospace">PCIEx16</text>
+          </g>
+        ))}
+
+        {/* PCIe x4 ports — bottom-right */}
+        {[0,1].map(ri => (
+          <g key={`bx4${ri}`}>
+            <rect x={1180} y={720+ri*40} width={120} height={14} rx={1} strokeWidth="0.5" strokeOpacity="0.18" />
+            {Array.from({length:18}, (_,i) => (
+              <line key={`bx4p${ri}_${i}`} x1={1186+i*6.6} y1={722+ri*40} x2={1186+i*6.6} y2={732+ri*40} strokeWidth="0.18" strokeOpacity="0.1" />
+            ))}
+            <text x={1240} y={730+ri*40} textAnchor="middle" fontSize="4" fill="#23346A" fillOpacity="0.08" fontFamily="monospace">PCIEx4</text>
+          </g>
         ))}
 
       </g>

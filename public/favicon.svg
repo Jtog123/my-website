@@ -1,4 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="4" fill="#8C2D31"/>
-  <text x="16" y="22" font-family="Arial,Helvetica,sans-serif" font-weight="bold" font-size="18" text-anchor="middle" fill="#fff">JT</text>
+  <defs>
+    <linearGradient id="thermal" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0033AA"/>
+      <stop offset="30%" stop-color="#33BB33"/>
+      <stop offset="60%" stop-color="#FFCC00"/>
+      <stop offset="100%" stop-color="#FF3300"/>
+    </linearGradient>
+  </defs>
+  <rect width="32" height="32" rx="4" fill="#fff"/>
+  <text x="16" y="23" font-family="Arial,Helvetica,sans-serif" font-weight="bold" font-size="19" text-anchor="middle">
+    <tspan fill="#1A1A1A">J</tspan><tspan fill="#FF2800">T</tspan>
+  </text>
+  <rect x="4" y="25.5" width="24" height="3" rx="1.5" fill="url(#thermal)"/>
 </svg>
