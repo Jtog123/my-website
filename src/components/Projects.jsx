@@ -120,6 +120,23 @@ export default function Projects() {
             <p className="projects__label">Work</p>
             <h2 className="projects__title">Selected <span className="projects__title-accent">Projects</span></h2>
             <div className="projects__accent" />
+            <div className="projects__pager" aria-label="Project pagination">
+              <div className="projects__pager-dots">
+                {projects.map((p, i) => (
+                  <button
+                    key={p.title}
+                    type="button"
+                    className={`projects__pager-dot${i === activeIndex ? ' projects__pager-dot--active' : ''}`}
+                    aria-label={`Go to project ${i + 1}: ${p.title}`}
+                    aria-pressed={i === activeIndex}
+                    onClick={() => goToProject(i)}
+                  />
+                ))}
+              </div>
+              <span className="projects__pager-count">
+                {String(activeIndex + 1).padStart(2, '0')}/{String(projects.length).padStart(2, '0')}
+              </span>
+            </div>
           </div>
         </div>
 
@@ -229,24 +246,6 @@ export default function Projects() {
           </motion.div>
         </div>
 
-        {/* Pager — via-pad indicators */}
-        <div className="projects__pager" aria-label="Project pagination">
-          <div className="projects__pager-dots">
-            {projects.map((p, i) => (
-              <button
-                key={p.title}
-                type="button"
-                className={`projects__pager-dot${i === activeIndex ? ' projects__pager-dot--active' : ''}`}
-                aria-label={`Go to project ${i + 1}: ${p.title}`}
-                aria-pressed={i === activeIndex}
-                onClick={() => goToProject(i)}
-              />
-            ))}
-          </div>
-          <span className="projects__pager-count">
-            {String(activeIndex + 1).padStart(2, '0')}/{String(projects.length).padStart(2, '0')}
-          </span>
-        </div>
 
       </div>
 

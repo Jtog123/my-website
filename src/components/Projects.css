@@ -19,7 +19,7 @@
 /* Header */
 .projects__header {
   flex-shrink: 0;
-  padding: 80px 24px 0;
+  padding: 48px 24px 0;
 }
 
 .projects__label {
@@ -29,7 +29,7 @@
   letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--grey);
-  margin-bottom: 16px;
+  margin-bottom: 10px;
 }
 
 .projects__title {
@@ -39,7 +39,7 @@
   text-transform: uppercase;
   letter-spacing: -0.02em;
   color: var(--black);
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
 .projects__title-accent {
@@ -50,7 +50,7 @@
   width: 60px;
   height: 3px;
   background: var(--red);
-  margin-bottom: 24px;
+  margin-bottom: 16px;
 }
 
 /* Viewport — hides overflow, takes remaining space */
@@ -498,13 +498,10 @@
 
 /* Pager — via-pad indicators */
 .projects__pager {
-  position: absolute;
-  bottom: 28px;
-  left: 32px;
   display: flex;
   align-items: center;
   gap: 14px;
-  z-index: 2;
+  margin-top: 8px;
 }
 
 .projects__pager-dots {
@@ -558,9 +555,40 @@
   opacity: 0.5;
 }
 
-@media (max-width: 768px) {
-  .projects__pager {
-    bottom: 20px;
-    left: 20px;
+
+/* Short screens — compact cards so the top line isn't clipped */
+@media (max-height: 800px) {
+  .projects__header {
+    padding-top: 32px;
+  }
+  .projects__card {
+    padding: 14px 20px 12px;
+  }
+  .pcb__header {
+    margin-bottom: 6px;
+    padding-bottom: 6px;
+  }
+  .pcb__image-frame {
+    height: 180px;
+    margin-bottom: 10px;
+  }
+  .pcb__title {
+    font-size: 1.05rem;
+    margin-bottom: 6px;
+  }
+  .pcb__desc {
+    margin-bottom: 8px;
+    -webkit-line-clamp: 2;
+  }
+  .pcb__highlight {
+    padding: 6px 8px;
+    margin-bottom: 6px;
+  }
+  .pcb__tags {
+    margin-bottom: 8px;
+  }
+  .pcb__traces {
+    margin-top: 6px;
+    padding-top: 6px;
   }
 }
