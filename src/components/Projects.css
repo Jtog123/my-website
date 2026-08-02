@@ -495,3 +495,72 @@
     display: none;
   }
 }
+
+/* Pager — via-pad indicators */
+.projects__pager {
+  position: absolute;
+  bottom: 28px;
+  left: 32px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  z-index: 2;
+}
+
+.projects__pager-dots {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 0;
+}
+
+/* Trace line connecting the pads */
+.projects__pager-dots::before {
+  content: '';
+  position: absolute;
+  left: 4px;
+  right: 4px;
+  top: 50%;
+  height: 1px;
+  background: rgba(35, 52, 106, 0.18);
+}
+
+.projects__pager-dot {
+  position: relative;
+  z-index: 1;
+  width: 8px;
+  height: 8px;
+  border: 1.5px solid rgba(35, 52, 106, 0.35);
+  background: var(--white);
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.25s ease;
+}
+
+.projects__pager-dot:hover {
+  border-color: rgba(35, 52, 106, 0.7);
+  background: rgba(35, 52, 106, 0.1);
+}
+
+.projects__pager-dot--active {
+  border-color: var(--red);
+  background: var(--red);
+  box-shadow: 0 0 6px rgba(255, 40, 0, 0.5);
+  transform: scale(1.15);
+}
+
+.projects__pager-count {
+  font-family: ui-monospace, 'SF Mono', 'JetBrains Mono', Menlo, Consolas, monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  color: var(--polo-blue);
+  opacity: 0.5;
+}
+
+@media (max-width: 768px) {
+  .projects__pager {
+    bottom: 20px;
+    left: 20px;
+  }
+}

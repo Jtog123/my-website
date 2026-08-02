@@ -1,5 +1,5 @@
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
+import { motion, useScroll, useTransform, useMotionValueEvent } from 'framer-motion';
+import { useRef, useState } from 'react';
 import './Projects.css';
 
 const asset = (p) => `${import.meta.env.BASE_URL}${p.replace(/^\//, '')}`;
@@ -93,6 +93,24 @@ export default function Projects() {
   const scrollDist = Math.max(0, totalWidth + 200 + 260 - 1440);
 
   const trackX = useTransform(scrollYProgress, [0, 1], [200, -(scrollDist)]);
+
+  const [activeIndex, setActiveIndex] = useState(0);
+  useMotionValueEvent(scrollYProgress, 'change', (p) => {
+    const idx = Math.min(projects.length - 1, Math.max(0, Math.round(p * (projects.length - 1))));
+    setActiveIndex(idx);
+  });
+
+  const goToProject = (i) => {
+    const section = sectionRef.current;
+    if (!section) return;
+    const rect = section.getBoundingClientRect();
+    const start = rect.top + window.scrollY;
+    const end = start + section.offsetHeight - window.innerHeight;
+    window.scrollTo({
+      top: start + (i / (projects.length - 1)) * (end - start),
+      behavior: 'smooth',
+    });
+  };
 
   return (
     <section className="projects" id="projects" ref={sectionRef}>
@@ -209,6 +227,25 @@ export default function Projects() {
             ))}
 
           </motion.div>
+        </div>
+
+        {/* Pager — via-pad indicators */}
+        <div className="projects__pager" aria-label="Project pagination">
+          <div className="projects__pager-dots">
+            {projects.map((p, i) => (
+              <button
+                key={p.title}
+                type="button"
+                className={`projects__pager-dot${i === activeIndex ? ' projects__pager-dot--active' : ''}`}
+                aria-label={`Go to project ${i + 1}: ${p.title}`}
+                aria-pressed={i === activeIndex}
+                onClick={() => goToProject(i)}
+              />
+            ))}
+          </div>
+          <span className="projects__pager-count">
+            {String(activeIndex + 1).padStart(2, '0')}/{String(projects.length).padStart(2, '0')}
+          </span>
         </div>
 
       </div>
