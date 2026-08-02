@@ -44,20 +44,11 @@ jobs:
       - name: Build Package
         run: npm run build
 
-      - name: Upload build artifcat
+      - name: Upload build artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: dist
-      
-      
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-        
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          # Upload entire repository
-          path: '.'
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5

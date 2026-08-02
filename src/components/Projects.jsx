@@ -2,12 +2,14 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import './Projects.css';
 
+const asset = (p) => `${import.meta.env.BASE_URL}${p.replace(/^\//, '')}`;
+
 const projects = [
   {
     title: 'ScreenshotSweet.io',
     desc: 'A 3D mockup platform that allows developers to design, preview, and capture high fidelity device mockups using a custom-modeled iPhone Blender asset.',
     tags: ['TypeScript', 'React', 'Node', 'ThreeJS', 'PostgreSQL'],
-    img: '/LogoBrown.svg',
+    img: asset('LogoBrown.svg'),
     imgStyle: { objectFit: 'contain', objectPosition: 'center', padding: '4px', background: 'linear-gradient(180deg, #0a0a0a 0%, #050505 50%, #0a0a0a 100%)', boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.04), inset 0 0 40px rgba(0,0,0,0.5)' },
     category: 'Web App',
     status: 'completed',
@@ -18,7 +20,7 @@ const projects = [
     title: 'LinkedIn Auto Applier',
     desc: 'Automated job application tool that intelligently fills and submits applications on LinkedIn based on user defined criteria and preferences.',
     tags: ['Python','Playwright', 'SQlite', 'Docker', 'AWS'],
-    img: '/AgentLinkedin.png',
+    img: asset('AgentLinkedin.png'),
     category: 'Automation',
     status: 'completed',
     private: true,
@@ -27,7 +29,7 @@ const projects = [
     title: 'Beanstalk Language',
     desc: 'A fully functional interpreted programming language built in C, featuring object oriented programming, functions, control flow, and all of core features found in modern high level languages.',
     tags: ['C Programming Langauge'],
-    img: '/JackBeanstalkGiant.jpg',
+    img: asset('JackBeanstalkGiant.jpg'),
     category: 'Self Learning',
     status: 'completed',
     url: 'https://github.com/Jtog123/Beanstalk_Language',
@@ -36,7 +38,7 @@ const projects = [
     title: 'ABE (Audio Book Enjoyer)',
     desc: 'Built an end to end text to speech pipeline using the Kokoro TTS model, processing PDFs by chapter and converting books into audio for users who prefer listening over reading.',
     tags: ['Python', 'FastAPI', 'Open Source', 'AI'],
-    img: '/abe-portrait.jpg',
+    img: asset('abe-portrait.jpg'),
     imgStyle: { objectPosition: 'center -70px' },
     category: 'Automation',
     status: 'in progress',
