@@ -75,7 +75,7 @@ export default function Contact() {
         <div className="container">
           <div className="contact__footer-inner">
             <span className="contact__footer-mark">&copy; 2026 James Togher</span>
-            <span className="contact__footer-tag">Candy Enjoyer</span>
+            <span className="contact__footer-tag"></span>
           </div>
         </div>
       </footer>

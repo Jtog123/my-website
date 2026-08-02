@@ -50,7 +50,8 @@ export default function About() {
           <div className="about__grid">
             <motion.div className="about__text" variants={slideLeft}>
               <p className="about__lead">
-                I build software that's clean, fast, and easy to use.
+                I have a background in Computer Science and the visual arts.
+                I like to build software that's clean, fast, and easy to use.
               </p>
 
               <div className="about__rig">
