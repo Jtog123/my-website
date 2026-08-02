@@ -1,0 +1,20 @@
+name: Basic Github Actions
+
+#Trigger the worflow
+on:
+  push:
+    branches: ["main"]
+
+# Workflow with one or more jobs
+jobs:
+  basic-job:
+    runs-on: ubuntu-latest
+
+    #the tasks
+    steps:
+      #Checkout the repo under workspace
+      - name: Check out repo code
+        uses: actions/checkout@v4
+      
+      - name: Run a small script
+        run:  echo "Hello github actions is running"
